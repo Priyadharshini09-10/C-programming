@@ -1,0 +1,57 @@
+typedef struct {
+    int mappedValue;
+    int index;
+    int original;
+} Item;
+
+int getMappedValue(int num, int* mapping) {
+    if (num == 0)
+        return mapping[0];
+
+    int mapped = 0;
+    int place = 1;
+
+    while (num > 0) {
+        int digit = num % 10;
+        mapped += mapping[digit] * place;
+        place *= 10;
+        num /= 10;
+    }
+    return mapped;
+}
+
+int compare(const void* a, const void* b) {
+    Item* x = (Item*)a;
+    Item* y = (Item*)b;
+
+    if (x->mappedValue != y->mappedValue)
+        return x->mappedValue - y->mappedValue;
+
+    // stability: keep original order
+    return x->index - y->index;
+}
+
+int* sortJumbled(int* mapping, int mappingSize,
+                 int* nums, int numsSize,
+                 int* returnSize) {
+
+    Item* arr = (Item*)malloc(numsSize * sizeof(Item));
+
+    for (int i = 0; i < numsSize; i++) {
+        arr[i].mappedValue = getMappedValue(nums[i], mapping);
+        arr[i].index = i;
+        arr[i].original = nums[i];
+    }
+
+    qsort(arr, numsSize, sizeof(Item), compare);
+
+    int* result = (int*)malloc(numsSize * sizeof(int));
+    for (int i = 0; i < numsSize; i++) {
+        result[i] = arr[i].original;
+    }
+
+    free(arr);
+    *returnSize = numsSize;
+    return result;
+}
+
