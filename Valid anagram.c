@@ -1,29 +1,22 @@
+#include <stdbool.h>
 #include <string.h>
 
-void reverse(char* s, int start, int end) {
-    while(start < end) {
-        char temp = s[start];
-        s[start] = s[end];
-        s[end] = temp;
-        start++;
-        end--;
-    }
-}
-
-char* reverseStr(char* s, int k) {
+bool isAnagram(char* s, char* t) {
     
-    int n = strlen(s);
+    if(strlen(s) != strlen(t))
+        return false;
     
-    for(int i = 0; i < n; i += 2*k) {
-        
-        int left = i;
-        int right = i + k - 1;
-        
-        if(right >= n)
-            right = n - 1;
-        
-        reverse(s, left, right);
+    int count[26] = {0};
+    
+    for(int i = 0; s[i] != '\0'; i++) {
+        count[s[i] - 'a']++;
+        count[t[i] - 'a']--;
     }
     
-    return s;
+    for(int i = 0; i < 26; i++) {
+        if(count[i] != 0)
+            return false;
+    }
+    
+    return true;
 }
