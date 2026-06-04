@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main()
+{
+    int n,lar,num,i;
+    scanf("%d",&n);
+    printf("Enter first num:");
+    scanf("%d",&lar);
+    printf("Enter rem num:");
+    for(i=2;i<=n;i++){
+        scanf("%d",&num);
+        if(num>lar)
+        lar=num;
+    }
+    printf("Largest:%d",lar);
+    return 0;
+}
