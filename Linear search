@@ -1,0 +1,21 @@
+#include <stdio.h>
+int main()
+{
+    int i,n,search;
+    scanf("%d",&n);
+    int arr[n];
+    for(i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    printf("Enter search num:");
+    scanf("%d",&search);
+    for(i=0;i<n;i++){
+        if(arr[i]==search){
+            printf("pos:%d",i);
+            return 0;
+        }
+    }
+    printf("Not found");
+
+    return 0;
+}
