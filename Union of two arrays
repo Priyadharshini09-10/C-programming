@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main()
+{
+    int k,i,j,n1=5,n2=4;
+    int arr1[]={1,2,3,4,5};
+    int arr2[]={2,4,6,7};
+    int arr3[10];
+    for(i=0;i<n1;i++){
+        arr3[i]=arr1[i];
+    }
+    int count=n2;
+    for(i=0;i<n2;i++){
+        int found=0;
+        for(j=0;j<count;j++){
+            if(arr2[i]==arr3[j]){
+                found=1;
+                break;
+            }
+        }
+        if(found==0){
+            arr3[count]=arr2[i];
+            count++;
+        }
+    }
+    for(i=0;i<count;i++){
+        printf("%d ",arr3[i]);
+    }
+
+    return 0;
+}
