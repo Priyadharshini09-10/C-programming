@@ -1,0 +1,31 @@
+#include <stdio.h>
+int arr[]={1,2,3,4};
+int n=4;
+int tar=6;
+int curr[10];
+void findCom(int start,int sum,int ind){
+    int i;
+    if(sum==tar){
+        for(i=0;i<ind;i++){
+            printf("%d ",curr[i]);
+        }
+        printf("\n");
+        return;
+    }
+    if(sum>tar){
+        return;
+    }
+    
+    for(i=start;i<n;i++){
+        curr[ind]=arr[i];
+        findCom(i+1,sum+arr[i],ind+1);
+    }
+    
+}
+
+
+int main()
+{
+    findCom(0,0,0);
+    return 0;
+}
