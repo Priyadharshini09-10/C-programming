@@ -1,0 +1,23 @@
+#include <stdio.h>
+int main()
+{
+   int arr[]={16,17,4,3,5,2};
+   int n=6,i;
+   int leader[10];
+   int index=0;
+   int maxright=arr[n-1];
+   leader[index]=arr[n-1];
+   index++;
+   for(i=n-2;i>=0;i--){
+       if(arr[i]>maxright){
+           leader[index]=arr[i];
+           index++;
+           maxright=arr[i];
+       }
+   }
+   for(i=index-1;i>=0;i--){
+       printf("%d ",leader[i]);
+   }
+
+    return 0;
+}
