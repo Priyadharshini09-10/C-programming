@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<limits.h>
+int main(){
+int arr[]={10,3,7,15};
+int i,j,n=4;
+int mindiff=INT_MAX;
+int diff,first,second;
+ for(i=0;i<n;i++){
+    for(j=i+1;j<n;j++){
+        diff=abs(arr[i]-arr[j]);
+        if(diff<mindiff){
+            mindiff=diff;
+            first=arr[i];
+            second=arr[j];
+        }
+    }
+}
+printf("%d %d",first,second);
+}
