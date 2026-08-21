@@ -1,0 +1,17 @@
+#include <stdio.h>
+int main()
+{
+   char str[100];
+   int freq[26]={0};
+   fgets(str,sizeof(str),stdin);
+   int i;
+   for(i=0;str[i]!='\0';i++){
+       freq[str[i]-'a']++;
+   }
+   for(i=0;i<26;i++){
+       if(freq[i]>0){
+           printf("%c->%d\n",'a'+i,freq[i]);
+       }
+   }
+    return 0;
+}
