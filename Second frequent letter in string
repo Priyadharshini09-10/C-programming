@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include<string.h>
+#include<limits.h>
+int main()
+{
+   char str[]={"banana"};
+   int len=strlen(str);
+   int freq[26]={0};
+   int sec=0,max=0;
+   int i,j;
+   for(i=0;str[i]!='\0';i++){
+       freq[str[i]-'a']++;
+   }
+   for(i=0;i<26;i++){
+       if(freq[i]>max){
+           max=freq[i];
+       }
+   }
+   for(i=0;i<26;i++){
+       if(freq[i]>sec&&freq[i]!=max){
+           sec=freq[i];
+       }
+   }
+printf("%d",sec);
+    return 0;
+}
